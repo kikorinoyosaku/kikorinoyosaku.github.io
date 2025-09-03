@@ -14,7 +14,25 @@
     <p class="mb-8 text-slate-600">下記のフォームに必要事項をご記入ください。送信後は確認ページに移動します。</p>
 
     <!-- ▼▼▼ ここを自分のフォームIDに置き換えます（例: https://formspree.io/f/abcdwxyz） ▼▼▼ -->
-    <form action=<form action="https://formspree.io/f/mvgbwqnb" method="POST">      <!-- 成功時のリダイレクト先（任意）。thanks.html を同じリポジトリに置いてください -->
+    <<form
+  action="https://formspree.io/f/mvgbwqnb"   <!-- ← あなたのフォームURL -->
+  method="POST"
+  data-redirect="https://kikorinoyosaku.github.io/yosaku-site/thanks.html"
+  accept-charset="UTF-8"
+>
+  <label class="block mb-1 font-semibold" for="name">お名前</label>
+  <input id="name" name="name" type="text" required class="w-full rounded-md border border-slate-300 px-3 py-2">
+
+  <label class="block mb-1 font-semibold mt-4" for="email">メールアドレス</label>
+  <input id="email" name="email" type="email" required class="w-full rounded-md border border-slate-300 px-3 py-2">
+
+  <label class="block mb-1 font-semibold mt-4" for="message">お問い合わせ内容</label>
+  <textarea id="message" name="message" rows="6" required class="w-full rounded-md border border-slate-300 px-3 py-2"></textarea>
+
+  <button type="submit" class="w-full bg-emerald-600 text-white py-3 rounded-md font-semibold hover:bg-emerald-700 transition mt-4">
+    送信する
+  </button>
+</form>      <!-- 成功時のリダイレクト先（任意）。thanks.html を同じリポジトリに置いてください -->
       <input type="hidden" name="_redirect" value="https://YOUR-USERNAME.github.io/YOUR-REPO/thanks.html">
 
       <div>
