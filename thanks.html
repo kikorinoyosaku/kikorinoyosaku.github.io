@@ -1,25 +1,60 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>お問い合わせ完了 | 与作</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>送信ありがとうございました</title>
+  <!-- Noto Sans JP & Tailwind CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{
+      --brand:#106b45;   /* 濃い緑（与作サイトのアクセント） */
+      --brand-600:#0e5f3e;
+      --brand-700:#0c5337;
+    }
+    html, body { height: 100%; }
+    body { font-family: "Noto Sans JP", system-ui, -apple-system, sans-serif; }
+  </style>
 </head>
-<body class="bg-white font-sans text-gray-800">
+<body class="min-h-screen bg-white text-slate-800">
+  <main class="mx-auto max-w-3xl px-6 py-16">
+    <section class="rounded-2xl border border-slate-200 bg-white p-10 shadow-lg">
+      <div class="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full"
+           style="background: color-mix(in srgb, var(--brand) 15%, white); border: 2px solid var(--brand)">
+        <!-- check icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2.5">
+          <path d="M20 6 9 17l-5-5"/>
+        </svg>
+      </div>
 
-  <div class="min-h-screen flex items-center justify-center">
-    <div class="bg-white shadow-lg rounded-lg p-8 max-w-md w-full border border-gray-200 text-center">
-      <h1 class="text-2xl font-bold text-green-700 mb-4">ありがとうございます！</h1>
-      <p class="text-gray-700 mb-6">送信が無事に完了しました。折り返しご連絡いたします。</p>
+      <h1 class="text-center text-2xl font-bold tracking-wide mb-3" style="color:var(--brand)">送信ありがとうございました</h1>
+      <p class="text-center text-slate-600">
+        内容を受け取りました。確認の上、折り返しご連絡いたします。
+      </p>
 
-      <!-- ボタン -->
-      <a href="index.html"
-        class="inline-block bg-green-700 text-white px-6 py-2 rounded-md shadow hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-600">
-        ホームへ戻る
-      </a>
-    </div>
-  </div>
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <a href="index.html"
+           class="inline-flex items-center justify-center rounded-lg px-5 py-3 font-semibold text-white shadow-sm transition hover:shadow
+                  focus:outline-none focus:ring-2 focus:ring-offset-2"
+           style="background:var(--brand); focus:ring-color:var(--brand)">
+          サイトへ戻る
+        </a>
+        <a href="form.html"
+           class="inline-flex items-center justify-center rounded-lg px-5 py-3 font-semibold text-slate-700 ring-1 ring-slate-300 bg-white hover:bg-slate-50">
+          もう一度送信する
+        </a>
+      </div>
 
+      <p class="mt-6 text-center text-xs text-slate-500">
+        ※自動返信メールが届かない場合は、迷惑メールフォルダもご確認ください。
+      </p>
+    </section>
+  </main>
+
+  <footer class="py-8 text-center text-xs text-slate-400">
+    © 2025 与作
+  </footer>
 </body>
 </html>
