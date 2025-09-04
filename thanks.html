@@ -1,60 +1,39 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>送信ありがとうございました</title>
-  <!-- Noto Sans JP & Tailwind CDN -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>送信ありがとうございました｜与作</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root{
-      --brand:#106b45;   /* 濃い緑（与作サイトのアクセント） */
-      --brand-600:#0e5f3e;
-      --brand-700:#0c5337;
-    }
-    html, body { height: 100%; }
-    body { font-family: "Noto Sans JP", system-ui, -apple-system, sans-serif; }
+    html,body{font-family:"Noto Sans JP", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol", sans-serif;}
   </style>
 </head>
-<body class="min-h-screen bg-white text-slate-800">
-  <main class="mx-auto max-w-3xl px-6 py-16">
-    <section class="rounded-2xl border border-slate-200 bg-white p-10 shadow-lg">
-      <div class="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full"
-           style="background: color-mix(in srgb, var(--brand) 15%, white); border: 2px solid var(--brand)">
-        <!-- check icon -->
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2.5">
-          <path d="M20 6 9 17l-5-5"/>
-        </svg>
+<body class="bg-white text-gray-800">
+  <main class="min-h-screen flex items-center justify-center py-10 px-4">
+    <div class="max-w-2xl w-full bg-white shadow-lg rounded-2xl p-8 ring-1 ring-gray-200">
+      <div class="mx-auto w-12 h-12 rounded-full bg-green-700 flex items-center justify-center text-white mb-4">
+        ✓
       </div>
+      <h1 class="text-2xl font-bold text-gray-900 text-center mb-2">送信ありがとうございました</h1>
+      <p class="text-sm text-gray-600 text-center mb-8">内容を受け取りました。確認の上、折り返しご連絡いたします。</p>
 
-      <h1 class="text-center text-2xl font-bold tracking-wide mb-3" style="color:var(--brand)">送信ありがとうございました</h1>
-      <p class="text-center text-slate-600">
-        内容を受け取りました。確認の上、折り返しご連絡いたします。
-      </p>
-
-      <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-        <a href="index.html"
-           class="inline-flex items-center justify-center rounded-lg px-5 py-3 font-semibold text-white shadow-sm transition hover:shadow
-                  focus:outline-none focus:ring-2 focus:ring-offset-2"
-           style="background:var(--brand); focus:ring-color:var(--brand)">
+      <div class="flex gap-3 justify-center">
+        <a href="/yosaku-site/index.html"
+           class="inline-flex justify-center items-center px-5 py-2.5 rounded-md bg-green-700 text-white font-semibold shadow hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-700">
           サイトへ戻る
         </a>
-        <a href="form.html"
-           class="inline-flex items-center justify-center rounded-lg px-5 py-3 font-semibold text-slate-700 ring-1 ring-slate-300 bg-white hover:bg-slate-50">
+        <a href="/yosaku-site/form.html"
+           class="inline-flex justify-center items-center px-5 py-2.5 rounded-md border border-gray-300 text-gray-700 font-semibold hover:bg-gray-50">
           もう一度送信する
         </a>
       </div>
 
-      <p class="mt-6 text-center text-xs text-slate-500">
-        ※自動返信メールが届かない場合は、迷惑メールフォルダもご確認ください。
-      </p>
-    </section>
+      <p class="text-center text-xs text-gray-400 mt-8">© 2025 与作</p>
+    </div>
   </main>
-
-  <footer class="py-8 text-center text-xs text-slate-400">
-    © 2025 与作
-  </footer>
 </body>
 </html>
