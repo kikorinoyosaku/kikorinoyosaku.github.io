@@ -1,91 +1,59 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>お問い合わせフォーム｜与作</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>与作 | お問い合わせ</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    html,body{font-family:"Noto Sans JP", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol", sans-serif;}
+    html, body { font-family: 'Noto Sans JP', system-ui, -apple-system, Segoe UI, Roboto, 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Noto Sans JP', 'Noto Sans', sans-serif; }
   </style>
 </head>
-<body class="bg-white text-gray-800">
-  <main class="min-h-screen flex items-center justify-center py-10 px-4">
-    <div class="max-w-2xl w-full bg-white shadow-lg rounded-2xl p-8 ring-1 ring-gray-200">
-      <h1 class="text-2xl font-bold text-gray-900 mb-2">お問い合わせ</h1>
-      <p class="text-sm text-gray-600 mb-8">必要事項をご入力の上、送信してください。折り返しご連絡します。</p>
 
-      <!-- フォーム -->
-      <form id="contactForm"
-            action="https://formspree.io/f/mldwojpb"
-            method="POST" accept-charset="UTF-8">
-        <!-- 送信後に自サイトの thanks.html へ遷移（サーバー側でも設定が効けばそちらが優先されます） -->
+<body class="bg-gray-50 text-gray-800">
+  <main class="container mx-auto px-4 py-10">
+    <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-md p-6 md:p-8">
+      <h2 class="text-2xl font-bold text-gray-900">お問い合わせ</h2>
+      <p class="mt-2 text-sm text-gray-600">必要事項をご入力の上、送信してください。折り返しご連絡します。</p>
+
+      <form action="https://formspree.io/f/mvgbwqnb" method="POST" accept-charset="utf-8" class="mt-6 space-y-6">
         <input type="hidden" name="_redirect" value="https://kikorinoyosaku.github.io/yosaku-site/thanks.html">
         <input type="hidden" name="_subject" value="与作サイトからのお問い合わせ">
         <input type="hidden" name="_language" value="ja">
 
-        <!-- お名前 -->
-        <div class="mb-4">
-          <label for="name" class="block text-sm font-medium text-gray-700 mb-1">お名前</label>
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-700">お名前</label>
           <input id="name" name="name" type="text" required
-                 class="block w-full rounded-md border-gray-300 shadow-sm focus:border-green-700 focus:ring-green-700 sm:text-sm">
+                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-700 focus:ring-green-700" />
         </div>
 
-        <!-- メール -->
-        <div class="mb-4">
-          <label for="email" class="block text-sm font-medium text-gray-700 mb-1">メールアドレス</label>
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">メールアドレス</label>
           <input id="email" name="email" type="email" required
-                 class="block w-full rounded-md border-gray-300 shadow-sm focus:border-green-700 focus:ring-green-700 sm:text-sm">
+                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-700 focus:ring-green-700" />
         </div>
 
-        <!-- お問い合わせ内容 -->
-        <div class="mb-6">
-          <label for="message" class="block text-sm font-medium text-gray-700 mb-1">お問い合わせ内容</label>
-          <textarea id="message" name="message" rows="5" required
-                    class="block w-full rounded-md border-gray-300 shadow-sm focus:border-green-700 focus:ring-green-700 sm:text-sm"></textarea>
+        <div>
+          <label for="message" class="block text-sm font-medium text-gray-700">お問い合わせ内容</label>
+          <textarea id="message" name="message" rows="6" required
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-700 focus:ring-green-700"></textarea>
         </div>
 
-        <!-- ボタン -->
-        <div class="flex gap-3 items-center">
+        <div class="pt-2">
           <button type="submit"
-                  class="inline-flex justify-center items-center px-6 py-3 rounded-md bg-green-700 text-white font-semibold shadow hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-700">
+                  class="w-full md:w-auto px-6 py-3 rounded-md bg-green-700 text-white font-semibold shadow hover:bg-green-800 focus:ring-2 focus:ring-green-700 focus:ring-offset-2">
             送信する
           </button>
-          <a href="/yosaku-site/index.html" class="text-sm text-gray-600 hover:underline">← ホームへ戻る</a>
         </div>
-
-        <p class="text-xs text-gray-500 mt-6">送信でプライバシーポリシーに同意したものとみなします。返信にお時間をいただく場合があります。</p>
       </form>
+
+      <div class="mt-6">
+        <a href="./index.html" class="text-sm text-green-800 hover:underline">← ホームへ戻る</a>
+      </div>
     </div>
   </main>
-
-  <!-- 送信後に必ず thanks.html に遷移させる確実版（Formspree の既定ページを回避） -->
-  <script>
-    (function () {
-      const form = document.getElementById('contactForm');
-      if (!form) return;
-      form.addEventListener('submit', async function (e) {
-        e.preventDefault();
-        const data = new FormData(form);
-        try {
-          await fetch(form.action, {
-            method: 'POST',
-            body: data,
-            headers: { 'Accept': 'application/json' }
-          });
-        } catch (err) {
-          console.error(err);
-        }
-        window.location.href = '/yosaku-site/thanks.html';
-      });
-    })();
-  </script>
-
-  <footer class="py-8 text-center text-xs text-gray-400">
-    <div>© 2025 与作</div>
-  </footer>
 </body>
 </html>
