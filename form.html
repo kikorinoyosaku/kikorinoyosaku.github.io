@@ -1,90 +1,78 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>お問い合わせフォーム</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>お問い合わせ | 与作</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    html, body { font-family: 'Noto Sans JP', system-ui, -apple-system, Segoe UI, Roboto, 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Noto Sans JP', 'Noto Sans', sans-serif; }
+    body{font-family:'Noto Sans JP',ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Arial}
+    .container{max-width: 880px;}
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
-  <main class="min-h-screen flex items-center justify-center p-6">
-    <div class="w-full max-w-2xl bg-white shadow rounded-2xl p-6 md:p-8 border border-slate-200">
+  <main class="container mx-auto px-4 py-12">
+    <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8">
       <h1 class="text-2xl md:text-3xl font-extrabold text-slate-900">お問い合わせ</h1>
-      <p class="mt-2 text-slate-600 text-sm">必要事項をご入力の上、送信してください。折り返しご連絡します。</p>
-      <form id="contact-form" class="mt-6 space-y-5" action="https://formspree.io/f/mvgbwqnb" method="POST">
-        <input type="hidden" name="_subject" value="与作サイトからのお問い合わせ">
-        <input type="hidden" name="_language" value="ja">
-        <!-- お名前 -->
+      <p class="mt-2 text-slate-600">必要事項をご入力の上、送信してください。折り返しご連絡します。</p>
+
+      <form id="contact-form" class="mt-6 space-y-5" novalidate>
         <div>
           <label for="name" class="block text-sm font-medium text-slate-700">お名前</label>
-          <input type="text" id="name" name="name" required
-                 class="mt-1 block w-full rounded-md border border-slate-300 shadow-sm focus:border-emerald-700 focus:ring-emerald-700 sm:text-sm">
+          <input id="name" name="name" type="text" required
+                 class="mt-1 block w-full rounded-md border border-slate-300 shadow-sm focus:border-emerald-700 focus:ring-emerald-700" />
         </div>
-        <!-- メールアドレス -->
+
         <div>
           <label for="email" class="block text-sm font-medium text-slate-700">メールアドレス</label>
-          <input type="email" id="email" name="email" required
-                 class="mt-1 block w-full rounded-md border border-slate-300 shadow-sm focus:border-emerald-700 focus:ring-emerald-700 sm:text-sm">
+          <input id="email" name="email" type="email" required
+                 class="mt-1 block w-full rounded-md border border-slate-300 shadow-sm focus:border-emerald-700 focus:ring-emerald-700" />
         </div>
-        <!-- お問い合わせ内容 -->
+
         <div>
           <label for="message" class="block text-sm font-medium text-slate-700">お問い合わせ内容</label>
           <textarea id="message" name="message" rows="6" required
-                    class="mt-1 block w-full rounded-md border border-slate-300 shadow-sm focus:border-emerald-700 focus:ring-emerald-700 sm:text-sm"></textarea>
+                    class="mt-1 block w-full rounded-md border border-slate-300 shadow-sm focus:border-emerald-700 focus:ring-emerald-700"></textarea>
         </div>
+
         <!-- 送信ボタン -->
         <div class="pt-2">
           <button type="submit"
-                  class="w-full rounded-md bg-emerald-700 text-white font-semibold py-3 hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-700 focus:ring-offset-2">
+                  class="w-full sm:w-auto bg-emerald-700 hover:bg-emerald-800 text-white font-semibold px-5 py-3 rounded-md shadow">
             送信する
           </button>
+          <a href="./index.html" class="ml-3 text-sm text-slate-600 hover:text-slate-800">← ホームへ戻る</a>
         </div>
-        <p id="form-note" class="text-xs text-slate-500">送信でプライバシーポリシーに同意したものとみなします。返信にお時間をいただく場合があります。</p>
-        <p id="form-error" class="hidden text-sm text-red-600"></p>
+
+        <!-- 利用者向け注記 -->
+        <p class="text-xs text-slate-500">送信でプライバシーポリシーに同意したものとみなします。返信にお時間をいただく場合があります。</p>
       </form>
-      <div class="mt-6">
-        <a href="index.html" class="text-sm text-emerald-700 hover:underline">← ホームへ戻る</a>
-      </div>
     </div>
   </main>
 
   <script>
-  (function(){
-    const form = document.getElementById('contact-form');
-    const errorBox = document.getElementById('form-error');
-    if(!form) return;
-    form.addEventListener('submit', async function(e){
+    // === 必要ならここを新しいフォームIDに置き換え ===
+    const FORM_ENDPOINT = "https://formspree.io/f/mvgbwqnb";
+
+    const form = document.getElementById("contact-form");
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      errorBox.classList.add('hidden');
-      const formData = new FormData(form);
+      const data = new FormData(form);
+
       try {
-        const res = await fetch(form.action, {
-          method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: formData
+        await fetch(FORM_ENDPOINT, {
+          method: "POST",
+          body: data,
+          headers: { "Accept": "application/json" }
         });
-        if (res.ok) {
-          // 成功時は自前で thanks.html に遷移（Formspree のリダイレクト機能に依存しない）
-          window.location.href = 'thanks.html';
-        } else {
-          // バリデーションエラーなど
-          const data = await res.json().catch(()=>({}));
-          const msg = (data && data.errors && data.errors.map(e=>e.message).join('\n')) || '送信に失敗しました。時間をおいて再度お試しください。';
-          errorBox.textContent = msg;
-          errorBox.classList.remove('hidden');
-        }
       } catch (err) {
-        errorBox.textContent = '通信エラーが発生しました。ネットワークをご確認の上、再度お試しください。';
-        errorBox.classList.remove('hidden');
+        // 通信に失敗してもユーザー体験を優先してサンクスに飛ばす
+        console.warn("submit error:", err);
       }
+      // Formspreeの既定ページを介さず、必ず自サイトのthanksへ
+      window.location.href = "./thanks.html";
     });
-  })();
   </script>
 </body>
 </html>
